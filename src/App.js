@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import { UserInfo } from "./components/UserInfo";
+import users from './users.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.users = users.map(function (info) {
+
+            return (
+
+                <p>{info.name} {info.website} {info.email}</p>
+            )
+        });
+    }
+
+    render() {
+
+        return (
+            <div>
+                <h1>Users List</h1>
+
+                <UserInfo nom={this.users}/>
+
+                {/* {this.users} */}
+
+            </div>
+        )
+
+    }
 }
 
-export default App;
+
+
+
